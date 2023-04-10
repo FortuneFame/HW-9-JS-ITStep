@@ -273,20 +273,11 @@ btn7.onclick = function () {
             index++;
             textUser = textUser.substring(i + 1);
             i = 0
-            arr[index] = "" + textUser.substring(0);
-            result = "<h3>" + arr.join(", ") + "</h3>";
-        }
-        else if (textUser[i] !== sumbUser) {
-            result += "<h2>" + "Ввод не соответствует условию! Попробуйте еще раз 🥺!!Error!!" + "</h2>";
-            break
-        }
-        else {
-            result += "<h2>" + "Что-то пошло не так, попробуйте еще раз 🥺!!Error!!" + "</h2>";
-            break
         }
     }
+    arr[index] = textUser.substring(0);
+    result = "<h3>" + arr.join(", ") + "</h3>";
 
     return document.getElementById('result7').innerHTML = result;
 }
-
 
