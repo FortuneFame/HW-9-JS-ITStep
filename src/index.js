@@ -206,22 +206,26 @@ btn5.onclick = function () {
     let result = "";
     buf = textUser.split(" ");
     
-    if ((typeof textUser === 'number' || typeof textUser === undefined)) {
-        result += "<h2>" + "Что-то пошло не так, попробуйте еще раз 🥺!!Error!!" + "</h2>";
-    }
-    else {
-        for (let i = 0; i < buf.length; ++i) {
-            for (let j = 0; j === 0; ++j) {
+    for (let i = 0; i < buf.length; ++i) {
+
+        for (let j = 0; j === 0; ++j) {
+
+            if ((buf[i][j] == Number)||(buf[i][j] == undefined)||(buf[i][j] == NaN)) {
+                result = "<h2>" + "Что-то пошло не так, попробуйте еще раз 🥺!!Error!!" + "</h2>";
+                break
+            }
+            else {
                 result += buf[i][j];
             }
         }
     }
-    
+
     return document.getElementById('result5').innerHTML = "<h3 class = \"text\" >" + result.toUpperCase() + "</h3>"
 }
 
 
 // --------------------------------- Task-6 ---------------------------------
+
 
 btn6.onclick = function () {
 
@@ -258,24 +262,29 @@ btn7.onclick = function () {
 
     let textUser = inputTask7.value;
     let sumbUser = inputTask7symbol.value;
-    
+
     let result = ""
     let index = 0;
     let arr = [];
 
     for (let i = 0; i < textUser.length; i++) {
-        if (textUser[i] == sumbUser) {
+        if (textUser[i] === sumbUser) {
             arr[index] = textUser.substring(0, i);
             index++;
-            textUser = textUser.substring((i + 1));
+            textUser = textUser.substring(i + 1);
             i = 0
+            arr[index] = "" + textUser.substring(0);
+            result = "<h3>" + arr.join(", ") + "</h3>";
+        }
+        else if (textUser[i] !== sumbUser) {
+            result += "<h2>" + "Ввод не соответствует условию! Попробуйте еще раз 🥺!!Error!!" + "</h2>";
+            break
+        }
+        else {
+            result += "<h2>" + "Что-то пошло не так, попробуйте еще раз 🥺!!Error!!" + "</h2>";
+            break
         }
     }
-
-
-    
-    arr[index] = "" + textUser.substring(0);
-    result = "<h3>" + arr.join() + "</h3>"
 
     return document.getElementById('result7').innerHTML = result;
 }
